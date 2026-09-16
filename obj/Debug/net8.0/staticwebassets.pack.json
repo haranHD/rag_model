@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "/home/haran/NN/local_rag_model/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.local_rag_model.props",
+      "PackagePath": "build\\local_rag_model.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.local_rag_model.props",
+      "PackagePath": "buildMultiTargeting\\local_rag_model.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.local_rag_model.props",
+      "PackagePath": "buildTransitive\\local_rag_model.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.local_rag_model.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

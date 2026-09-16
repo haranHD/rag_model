@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/local_rag_model.props" />
+</Project>

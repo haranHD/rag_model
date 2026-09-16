@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "MMKeBGzLqwoJMvZjah0wXpZEb7UlGtY+o3RdUWlprQk=",
+  "Source": "local_rag_model",
+  "BasePath": "_content/local_rag_model",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "local_rag_model/wwwroot",
+      "Source": "local_rag_model",
+      "ContentRoot": "/home/haran/NN/local_rag_model/wwwroot/",
+      "BasePath": "_content/local_rag_model",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/haran/NN/local_rag_model/wwwroot/index.html",
+      "SourceId": "local_rag_model",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/haran/NN/local_rag_model/wwwroot/",
+      "BasePath": "_content/local_rag_model",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    }
+  ]
+}
