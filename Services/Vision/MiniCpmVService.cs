@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using local_rag_model.DTOs.Ocr;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.Processing;
 
 namespace local_rag_model.Services.Vision;
 
@@ -12,6 +15,10 @@ public class MiniCpmVService : IMiniCpmVService
     private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration;
     private readonly ILogger<MiniCpmVService> _logger;
+
+    // Max image dimensions before downscaling — keeps inference fast & avoids timeouts
+    private const int MaxImageWidth = 1024;
+    private const int MaxImageHeight = 1024;
 
     public MiniCpmVService(HttpClient httpClient, IConfiguration configuration, ILogger<MiniCpmVService> logger)
     {
@@ -33,9 +40,9 @@ public class MiniCpmVService : IMiniCpmVService
 
         var selectedPrompt = !string.IsNullOrWhiteSpace(prompt)
             ? prompt
-            : _configuration["Ollama:DefaultPrompt"] ?? "Extract all text from this image accurately.";
+            : _configuration["Ollama:DefaultPrompt"] ?? "Perform strict OCR. Transcribe all text visible in this image line by line. Output ONLY raw text.";
 
-        var cleanedImage = CleanBase64(base64Image);
+        var cleanedImage = PrepareAndOptimizeBase64Image(base64Image);
         if (string.IsNullOrEmpty(cleanedImage))
         {
             return new OcrResponse
@@ -114,9 +121,9 @@ public class MiniCpmVService : IMiniCpmVService
 
         var selectedPrompt = !string.IsNullOrWhiteSpace(prompt)
             ? prompt
-            : _configuration["Ollama:DefaultPrompt"] ?? "Extract all text from this image accurately.";
+            : _configuration["Ollama:DefaultPrompt"] ?? "Perform strict OCR. Transcribe all text visible in this image line by line. Output ONLY raw text.";
 
-        var cleanedImage = CleanBase64(base64Image);
+        var cleanedImage = PrepareAndOptimizeBase64Image(base64Image);
         if (string.IsNullOrEmpty(cleanedImage))
         {
             yield return "Error: Image payload is empty or invalid Base64.";
@@ -180,15 +187,51 @@ public class MiniCpmVService : IMiniCpmVService
         }
     }
 
-    private static string CleanBase64(string base64)
+    /// <summary>
+    /// Strips Data URI prefix, decodes the image, resizes it to max 1024x1024 if needed,
+    /// re-encodes as JPEG (quality 85) to minimise token payload, then returns clean Base64.
+    /// Smaller payloads = faster inference = no 120-second timeout.
+    /// </summary>
+    private string PrepareAndOptimizeBase64Image(string base64)
     {
         if (string.IsNullOrWhiteSpace(base64)) return string.Empty;
+
+        // Strip "data:image/xxx;base64," prefix if present
         var commaIndex = base64.IndexOf(',');
-        if (commaIndex >= 0)
+        var rawBase64 = commaIndex >= 0 ? base64[(commaIndex + 1)..].Trim() : base64.Trim();
+
+        if (string.IsNullOrEmpty(rawBase64)) return string.Empty;
+
+        try
         {
-            return base64.Substring(commaIndex + 1).Trim();
+            var imageBytes = Convert.FromBase64String(rawBase64);
+
+            using var image = Image.Load(imageBytes);
+
+            // Only resize if image is larger than our max dimensions
+            if (image.Width > MaxImageWidth || image.Height > MaxImageHeight)
+            {
+                _logger.LogInformation(
+                    "Resizing image from {W}x{H} to max {MaxW}x{MaxH} for faster inference.",
+                    image.Width, image.Height, MaxImageWidth, MaxImageHeight);
+
+                image.Mutate(x => x.Resize(new ResizeOptions
+                {
+                    Size = new Size(MaxImageWidth, MaxImageHeight),
+                    Mode = ResizeMode.Max   // Preserves aspect ratio
+                }));
+            }
+
+            using var outputStream = new MemoryStream();
+            image.Save(outputStream, new JpegEncoder { Quality = 85 });
+            return Convert.ToBase64String(outputStream.ToArray());
         }
-        return base64.Trim();
+        catch (Exception ex)
+        {
+            // If image processing fails, fall back to raw cleaned base64
+            _logger.LogWarning(ex, "Image optimization failed, using raw Base64 instead.");
+            return rawBase64;
+        }
     }
 
     private class OllamaGenerateRequest
@@ -230,4 +273,3 @@ public class MiniCpmVService : IMiniCpmVService
         public bool Done { get; set; }
     }
 }
-

@@ -13,7 +13,7 @@ var ollamaBaseUrl = builder.Configuration["Ollama:BaseUrl"] ?? "http://localhost
 builder.Services.AddHttpClient<IMiniCpmVService, MiniCpmVService>(client =>
 {
     client.BaseAddress = new Uri(ollamaBaseUrl);
-    client.Timeout = TimeSpan.FromMinutes(2);
+    client.Timeout = TimeSpan.FromMinutes(10);
 });
 
 var app = builder.Build();

@@ -1,0 +1,20 @@
+## .NET Build & Binary Output
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+

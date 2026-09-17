@@ -1,4 +1,5 @@
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/appsettings.json
+/home/haran/NN/local_rag_model/bin/Debug/net8.0/local_rag_model.staticwebassets.runtime.json
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/local_rag_model
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/local_rag_model.deps.json
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/local_rag_model.runtimeconfig.json
@@ -30,4 +31,4 @@
 /home/haran/NN/local_rag_model/obj/Debug/net8.0/local_rag_model.pdb
 /home/haran/NN/local_rag_model/obj/Debug/net8.0/local_rag_model.genruntimeconfig.cache
 /home/haran/NN/local_rag_model/obj/Debug/net8.0/ref/local_rag_model.dll
-/home/haran/NN/local_rag_model/bin/Debug/net8.0/local_rag_model.staticwebassets.runtime.json
+/home/haran/NN/local_rag_model/bin/Debug/net8.0/SixLabors.ImageSharp.dll
