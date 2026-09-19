@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "local_rag_model/1.0.0": {
         "dependencies": {
-          "SixLabors.ImageSharp": "3.1.7",
+          "SixLabors.ImageSharp": "4.1.2",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
@@ -24,11 +24,14 @@
           }
         }
       },
-      "SixLabors.ImageSharp/3.1.7": {
+      "SixLabors.ImageSharp/4.1.2": {
+        "dependencies": {
+          "System.IO.Hashing": "8.0.0"
+        },
         "runtime": {
-          "lib/net6.0/SixLabors.ImageSharp.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.1.7.0"
+          "lib/net8.0/SixLabors.ImageSharp.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.1.2.0"
           }
         }
       },
@@ -69,6 +72,14 @@
             "fileVersion": "6.5.0.0"
           }
         }
+      },
+      "System.IO.Hashing/8.0.0": {
+        "runtime": {
+          "lib/net8.0/System.IO.Hashing.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
       }
     }
   },
@@ -92,12 +103,12 @@
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
     },
-    "SixLabors.ImageSharp/3.1.7": {
+    "SixLabors.ImageSharp/4.1.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9fIOOAsyLFid6qKypM2Iy0Z3Q9yoanV8VoYAHtI2sYGMNKzhvRTjgFDHonIiVe+ANtxIxM6SuqUzj0r91nItpA==",
-      "path": "sixlabors.imagesharp/3.1.7",
-      "hashPath": "sixlabors.imagesharp.3.1.7.nupkg.sha512"
+      "sha512": "sha512-AQ0oouhH/6qmXJC70/k50iVt7SiZRjCgd4tXXiC5ZrB5CvyBwA81HTqb5twcXz8CvTAFxUNV0TAcL83OhyRA1g==",
+      "path": "sixlabors.imagesharp/4.1.2",
+      "hashPath": "sixlabors.imagesharp.4.1.2.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.5.0": {
       "type": "package",
@@ -126,6 +137,13 @@
       "sha512": "sha512-OvbvxX+wL8skxTBttcBsVxdh73Fag4xwqEU2edh4JMn7Ws/xJHnY/JB1e9RoCb6XpDxUF3hD9A0Z1lEUx40Pfw==",
       "path": "swashbuckle.aspnetcore.swaggerui/6.5.0",
       "hashPath": "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+    },
+    "System.IO.Hashing/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ne1843evDugl0md7Fjzy6QjJrzsjh46ZKbhf8GwBXb5f/gw97J4bxMs0NQKifDuThh/f0bZ0e62NPl1jzTuRqA==",
+      "path": "system.io.hashing/8.0.0",
+      "hashPath": "system.io.hashing.8.0.0.nupkg.sha512"
     }
   }
 }

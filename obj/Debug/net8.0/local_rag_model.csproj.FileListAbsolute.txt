@@ -6,9 +6,11 @@
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/local_rag_model.dll
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/local_rag_model.pdb
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/home/haran/NN/local_rag_model/bin/Debug/net8.0/SixLabors.ImageSharp.dll
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /home/haran/NN/local_rag_model/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/haran/NN/local_rag_model/bin/Debug/net8.0/System.IO.Hashing.dll
 /home/haran/NN/local_rag_model/obj/Debug/net8.0/local_rag_model.csproj.AssemblyReference.cache
 /home/haran/NN/local_rag_model/obj/Debug/net8.0/local_rag_model.GeneratedMSBuildEditorConfig.editorconfig
 /home/haran/NN/local_rag_model/obj/Debug/net8.0/local_rag_model.AssemblyInfoInputs.cache
@@ -31,4 +33,3 @@
 /home/haran/NN/local_rag_model/obj/Debug/net8.0/local_rag_model.pdb
 /home/haran/NN/local_rag_model/obj/Debug/net8.0/local_rag_model.genruntimeconfig.cache
 /home/haran/NN/local_rag_model/obj/Debug/net8.0/ref/local_rag_model.dll
-/home/haran/NN/local_rag_model/bin/Debug/net8.0/SixLabors.ImageSharp.dll

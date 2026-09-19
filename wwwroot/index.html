@@ -9,56 +9,61 @@
         :root {
             --primary: #4F46E5;
             --primary-hover: #4338CA;
+            --green: #059669;
             --bg: #F9FAFB;
             --card-bg: #FFFFFF;
             --text: #1F2937;
             --border: #E5E7EB;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: var(--bg);
             color: var(--text);
             margin: 0;
-            padding: 40px 20px;
+            padding: 32px 16px;
             display: flex;
             justify-content: center;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 860px;
             width: 100%;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
         .header h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-size: 26px;
+            margin-bottom: 6px;
             color: #111827;
         }
 
         .header p {
             color: #6B7280;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            margin-bottom: 24px;
+            padding: 22px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
         }
 
         .drop-zone {
             border: 2px dashed #CBD5E1;
             border-radius: 8px;
-            padding: 30px;
+            padding: 28px;
             text-align: center;
             cursor: pointer;
             transition: border-color 0.2s;
@@ -70,82 +75,139 @@
         }
 
         .preview-container {
-            margin-top: 20px;
+            margin-top: 16px;
             display: none;
             text-align: center;
         }
 
         .preview-img {
             max-width: 100%;
-            max-height: 350px;
+            max-height: 320px;
             border-radius: 8px;
             border: 1px solid var(--border);
         }
 
         .form-group {
-            margin-top: 20px;
+            margin-top: 16px;
         }
 
         label {
             display: block;
             font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 14px;
+            font-size: 13px;
+            margin-bottom: 5px;
         }
 
-        input[type="text"] {
+        input[type="text"],
+        select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 9px 12px;
             border: 1px solid var(--border);
             border-radius: 6px;
             font-size: 14px;
-            box-sizing: border-box;
         }
 
         .btn-group {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 18px;
         }
 
         button {
             flex: 1;
-            padding: 12px 20px;
-            background-color: var(--primary);
-            color: white;
+            padding: 11px 18px;
+            background: var(--primary);
+            color: #fff;
             border: none;
             border-radius: 6px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: background 0.2s;
         }
 
         button:hover {
-            background-color: var(--primary-hover);
+            background: var(--primary-hover);
+        }
+
+        button.green {
+            background: var(--green);
+        }
+
+        button.green:hover {
+            background: #047857;
         }
 
         button:disabled {
-            background-color: #9CA3AF;
+            background: #9CA3AF;
             cursor: not-allowed;
+        }
+
+        /* Output tabs */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .tab-btn {
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #F3F4F6;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
         }
 
         .output-box {
             white-space: pre-wrap;
             background: #1E293B;
             color: #F8FAFC;
-            padding: 16px;
+            padding: 14px;
             border-radius: 8px;
             font-family: monospace;
-            font-size: 14px;
-            min-height: 120px;
-            margin-top: 10px;
+            font-size: 13px;
+            min-height: 110px;
+            max-height: 340px;
+            overflow-y: auto;
+        }
+
+        /* Key-value table */
+        .kv-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            display: none;
+        }
+
+        .kv-table th {
+            background: #F3F4F6;
+            text-align: left;
+            padding: 7px 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .kv-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .kv-table tr:hover td {
+            background: #F9FAFB;
         }
 
         .meta-info {
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
+            font-size: 12px;
             color: #6B7280;
             margin-top: 8px;
         }
@@ -153,56 +215,102 @@
         .status {
             font-weight: 600;
         }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-left: 6px;
+        }
+
+        .badge-ok {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .badge-err {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
     </style>
 </head>
 
 <body>
-
     <div class="container">
         <div class="header">
-            <h1>MiniCPM-V OCR Demo</h1>
-            <p>Upload an image to extract text using the local MiniCPM-V vision model</p>
+            <h1>MiniCPM-V OCR Engine</h1>
+            <p>Upload an image to extract text and key-value data using a local Vision AI model</p>
         </div>
 
         <div class="card">
             <div class="drop-zone" id="dropZone">
-                <p><strong>Click to select an image</strong> or drag & drop here</p>
-                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <p><strong>Click to select an image</strong> or drag &amp; drop here</p>
+                <input type="file" id="fileInput" accept="image/*" style="display:none">
             </div>
-
             <div class="preview-container" id="previewContainer">
-                <img id="previewImg" class="preview-img" alt="Uploaded Image Preview">
+                <img id="previewImg" class="preview-img" alt="Preview">
             </div>
 
             <div class="form-group">
                 <label for="modelSelect">Vision Model:</label>
-                <select id="modelSelect"
-                    style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px;">
+                <select id="modelSelect">
+                    <option value="minicpm-v">MiniCPM-V (Local — minicpm-v:latest)</option>
                     <option value="openbmb/minicpm-v">OpenBMB MiniCPM-V (Official Tag)</option>
-                    <option value="llama3.2-vision:1b">Llama 3.2 Vision 1B (1.5 GB - Lightweight)</option>
-                    <option value="moondream">Moondream Vision OCR (825 MB - Ultra Low RAM)</option>
-                    <option value="minicpm-v">MiniCPM-V (Local Original - 5.5 GB)</option>
+                    <option value="moondream">Moondream (825 MB — Low RAM)</option>
+                    <option value="llama3.2-vision:11b">Llama 3.2 Vision 11B</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="promptInput">Prompt (Optional):</label>
-                <input type="text" id="promptInput"
-                    value="Perform strict OCR. Transcribe all text visible in this image line by line. Do NOT describe the image or explain anything. Output ONLY raw text.">
+                <label for="promptInput">Prompt (Optional — leave blank for default strict OCR):</label>
+                <input type="text" id="promptInput" placeholder="Leave empty for default OCR prompt">
             </div>
 
             <div class="btn-group">
                 <button id="processBtn" disabled>Extract Text</button>
-                <button id="streamBtn" disabled style="background-color: #059669;">Stream Text</button>
+                <button id="streamBtn" class="green" disabled>Stream Text</button>
             </div>
         </div>
 
         <div class="card">
-            <h3>Extracted Output:</h3>
-            <div id="output" class="output-box">No text extracted yet...</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <h3 style="margin:0;">Extracted Output</h3>
+                <div style="display:flex; gap:6px;">
+                    <button class="tab-btn active" id="tabRaw" onclick="showTab('raw')">Raw Text</button>
+                    <button class="tab-btn" id="tabJson" onclick="showTab('json')">JSON</button>
+                    <button class="tab-btn" id="tabTable" onclick="showTab('table')">Key-Values</button>
+                </div>
+            </div>
+
+            <!-- Raw text view -->
+            <div id="viewRaw">
+                <div id="output" class="output-box">No text extracted yet...</div>
+            </div>
+
+            <!-- Full JSON view -->
+            <div id="viewJson" style="display:none;">
+                <div id="outputJson" class="output-box">{}</div>
+            </div>
+
+            <!-- Key-value table view -->
+            <div id="viewTable" style="display:none;">
+                <table class="kv-table" id="kvTable">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kvBody"></tbody>
+                </table>
+                <p id="noKv" style="color:#6B7280;font-size:13px;display:none;">No key-value pairs detected.</p>
+            </div>
+
             <div class="meta-info">
                 <span id="status" class="status">Status: Ready</span>
-                <span id="timing">Execution Time: -</span>
+                <span id="timing">Execution Time: —</span>
             </div>
         </div>
     </div>
@@ -215,41 +323,31 @@
         const processBtn = document.getElementById('processBtn');
         const streamBtn = document.getElementById('streamBtn');
         const promptInput = document.getElementById('promptInput');
+        const modelSelect = document.getElementById('modelSelect');
         const output = document.getElementById('output');
+        const outputJson = document.getElementById('outputJson');
+        const kvBody = document.getElementById('kvBody');
+        const noKv = document.getElementById('noKv');
         const status = document.getElementById('status');
         const timing = document.getElementById('timing');
 
         let selectedFile = null;
+        let lastResponse = null;
 
         dropZone.addEventListener('click', () => fileInput.click());
-
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleFile(e.target.files[0]);
-            }
-        });
-
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.style.borderColor = '#4F46E5';
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.style.borderColor = '#CBD5E1';
-        });
-
-        dropZone.addEventListener('drop', (e) => {
+        fileInput.addEventListener('change', e => { if (e.target.files.length) handleFile(e.target.files[0]); });
+        dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.borderColor = '#4F46E5'; });
+        dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#CBD5E1'; });
+        dropZone.addEventListener('drop', e => {
             e.preventDefault();
             dropZone.style.borderColor = '#CBD5E1';
-            if (e.dataTransfer.files.length > 0) {
-                handleFile(e.dataTransfer.files[0]);
-            }
+            if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
         });
 
         function handleFile(file) {
             selectedFile = file;
             const reader = new FileReader();
-            reader.onload = (e) => {
+            reader.onload = e => {
                 previewImg.src = e.target.result;
                 previewContainer.style.display = 'block';
                 processBtn.disabled = false;
@@ -258,35 +356,54 @@
             reader.readAsDataURL(file);
         }
 
-        const modelSelect = document.getElementById('modelSelect');
+        function showTab(tab) {
+            ['raw', 'json', 'table'].forEach(t => {
+                document.getElementById('view' + t.charAt(0).toUpperCase() + t.slice(1)).style.display = t === tab ? '' : 'none';
+                document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1)).classList.toggle('active', t === tab);
+            });
+        }
+
+        function renderResponse(data) {
+            lastResponse = data;
+            // Raw text
+            output.textContent = data.extractedText || '(No text detected)';
+            // Full JSON
+            outputJson.textContent = JSON.stringify(data, null, 2);
+            // Key-value table
+            kvBody.innerHTML = '';
+            const kv = data.keyValues || {};
+            const keys = Object.keys(kv);
+            if (keys.length) {
+                keys.forEach(k => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${k}</td><td><strong>${kv[k]}</strong></td>`;
+                    kvBody.appendChild(tr);
+                });
+                document.getElementById('kvTable').style.display = 'table';
+                noKv.style.display = 'none';
+            } else {
+                document.getElementById('kvTable').style.display = 'none';
+                noKv.style.display = '';
+            }
+            timing.textContent = `${data.executionTimeMs} ms | Model: ${data.modelUsed} | Size: ${data.imageSize || '—'}`;
+            status.textContent = data.success ? 'Status: ✅ Completed' : 'Status: ❌ Failed';
+        }
 
         processBtn.addEventListener('click', async () => {
             if (!selectedFile) return;
-
-            setLoading(true, "Processing OCR...");
+            setLoading(true, 'Processing OCR...');
             const formData = new FormData();
             formData.append('file', selectedFile);
-            formData.append('prompt', promptInput.value);
+            if (promptInput.value.trim()) formData.append('prompt', promptInput.value.trim());
             formData.append('model', modelSelect.value);
-
             try {
-                const res = await fetch('/api/ocr/upload', {
-                    method: 'POST',
-                    body: formData
-                });
-
+                const res = await fetch('/api/ocr/upload', { method: 'POST', body: formData });
                 const data = await res.json();
-                if (data.success) {
-                    output.textContent = data.extractedText || "(No text detected)";
-                    timing.textContent = `Execution Time: ${data.executionTimeMs} ms (${data.modelUsed})`;
-                    status.textContent = "Status: Completed";
-                } else {
-                    output.textContent = `Error: ${data.errorMessage}`;
-                    status.textContent = "Status: Failed";
-                }
+                renderResponse(data);
+                if (!data.success) output.textContent = `Error: ${data.errorMessage}`;
             } catch (err) {
                 output.textContent = `Request Error: ${err.message}`;
-                status.textContent = "Status: Error";
+                status.textContent = 'Status: ❌ Error';
             } finally {
                 setLoading(false);
             }
@@ -294,41 +411,39 @@
 
         streamBtn.addEventListener('click', async () => {
             if (!selectedFile) return;
-
-            setLoading(true, "Streaming OCR...");
-            output.textContent = "";
-
+            setLoading(true, 'Streaming OCR...');
+            output.textContent = '';
+            outputJson.textContent = '';
+            kvBody.innerHTML = '';
             const reader = new FileReader();
-            reader.onload = async (e) => {
+            reader.onload = async e => {
                 const base64 = e.target.result;
                 const startTime = performance.now();
-
                 try {
                     const res = await fetch('/api/ocr/stream', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             imageBase64: base64,
-                            prompt: promptInput.value,
+                            prompt: promptInput.value.trim() || undefined,
                             model: modelSelect.value
                         })
                     });
-
                     const streamReader = res.body.getReader();
                     const decoder = new TextDecoder();
-
+                    let text = '';
                     while (true) {
                         const { done, value } = await streamReader.read();
                         if (done) break;
-                        output.textContent += decoder.decode(value, { stream: true });
+                        text += decoder.decode(value, { stream: true });
+                        output.textContent = text;
                     }
-
-                    const endTime = performance.now();
-                    timing.textContent = `Execution Time: ${Math.round(endTime - startTime)} ms (Streaming)`;
-                    status.textContent = "Status: Streaming Completed";
+                    const ms = Math.round(performance.now() - startTime);
+                    timing.textContent = `${ms} ms (streaming) | Model: ${modelSelect.value}`;
+                    status.textContent = 'Status: ✅ Streaming Completed';
                 } catch (err) {
                     output.textContent = `Stream Error: ${err.message}`;
-                    status.textContent = "Status: Error";
+                    status.textContent = 'Status: ❌ Error';
                 } finally {
                     setLoading(false);
                 }
@@ -336,7 +451,7 @@
             reader.readAsDataURL(selectedFile);
         });
 
-        function setLoading(isLoading, statusText = "Ready") {
+        function setLoading(isLoading, statusText = 'Ready') {
             processBtn.disabled = isLoading;
             streamBtn.disabled = isLoading;
             status.textContent = `Status: ${statusText}`;
